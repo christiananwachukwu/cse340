@@ -130,6 +130,13 @@ footer {
 
 /* ==== Large Screen ==== */
 @media screen and (min-width:768px) {
+  body {
+    background-color: #e6e6e6;
+  }
+  #wrapper {
+    background-color: #ffffff;
+    padding: 1rem;
+  }
   .details {
     display: flex;
     gap: 3rem;
