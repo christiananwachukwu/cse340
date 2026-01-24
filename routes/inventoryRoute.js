@@ -2,10 +2,13 @@
 const express = require("express")
 const router = new express.Router()
 const invController = require("../controllers/invController")
+const utilities = require("../utilities/")
 
 // Route to build inventory by classification view
-router.get("/type/:classificationId", invController.buildByClassificationId);
+router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
 // Rest route
-router.get("/test", invController.testInventory);
+router.get("/test", utilities.handleErrors(invController.testInventory));
+// Inventory Detail Route
+router.get("/detail/:invId", utilities.handleErrors(invController.buildByInventoryId));
 
 module.exports = router;

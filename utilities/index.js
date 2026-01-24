@@ -30,7 +30,7 @@ Util.buildClassificationGrid = async function(data){
       grid += '<li>'
       grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id
       + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model
-      + 'details"><img src="' + vehicle.inv_thumbnail
+      + ' details"><img src="' + vehicle.inv_thumbnail
       +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model
       +' on CSE Motors" /></a>'
       grid += '<div class="namePrice">'
@@ -51,6 +51,43 @@ Util.buildClassificationGrid = async function(data){
   }
   return grid
 }
+
+/* **************************************
+* Build the vehicle detail HTML
+* ************************************ */
+Util.buildVehicleDetailHTML = async function(vehicle) {
+  let detail = '<div class="vehicle-detail">';
+ 
+  // Image section
+  detail += '<div class="vehicle-image">';
+  detail += `<img src="${vehicle.inv_image}" alt="${vehicle.inv_make} ${vehicle.inv_model}">`;
+  detail += '</div>';
+ 
+  // Info section
+  detail += '<div class="vehicle-info">';
+  detail += `<h2>${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}</h2>`;
+ 
+  // Price - formatted with commas and dollar sign
+  const price = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0
+  }).format(vehicle.inv_price);
+  detail += `<p class="price"><strong>Price: ${price}</strong></p>`;
+ 
+  // Mileage - formatted with commas
+  const mileage = new Intl.NumberFormat('en-US').format(vehicle.inv_miles);
+  detail += `<p><strong>Mileage:</strong> ${mileage} miles</p>`;
+ 
+  detail += `<p><strong>Color:</strong> ${vehicle.inv_color}</p>`;
+  detail += `<p><strong>Description:</strong> ${vehicle.inv_description}</p>`;
+ 
+  detail += '</div>'; // close vehicle-info
+  detail += '</div>'; // close vehicle-detail
+ 
+  return detail;
+};
+
 /* *************************
 * Middleware for Handling Errors
 * Wrap other function in this for

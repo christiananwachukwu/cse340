@@ -121,6 +121,54 @@ nav ul li a:hover, nav ul li a:focus {
   padding-left: 1.5rem;
 }
 
+/* Vehicle Detail Styles */
+.vehicle-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.vehicle-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.vehicle-info {
+  padding: 1rem;
+}
+
+.vehicle-info h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.price {
+  font-size: 1.5rem;
+  color: #2a7ae2;
+  margin: 1rem 0;
+}
+
+/* ===== Error Page Styles ===== */
+.error-container {
+  text-align: center;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+.error-container p {
+  font-size: 1.2rem;
+  margin: 1.5rem 0;
+  color: #333;
+}
+
+.error-container h1 {
+  color: #d32f2f;
+  margin-bottom: 1rem;
+}
+
 /* ===Footer ==== */
 footer {
   margin-top: 2rem;
@@ -149,5 +197,14 @@ footer {
  .reviews {
     flex: 1;
     order: 2;
+  }
+  .vehicle-detail {
+    flex-direction: row;
+  }
+  .vehicle-image {
+    flex: 1;
+  }
+  .vehicle-info {
+    flex: 1;
   }
 }
