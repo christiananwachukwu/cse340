@@ -21,7 +21,7 @@ async function getInventoryByClassificationId(classification_id) {
     )
     return data.rows
   } catch (error) {
-    console.error("getclassificationsbyid error " + error)
+    console.error("getInventoryByclassificationId error " + error)
   }
 }
 /* ***************************
@@ -36,7 +36,6 @@ async function getInventoryById(inv_id) {
     return data.rows[0]; // Returns single vehicle object
   } catch (error) {
     console.error("getInventoryById error: " + error);
-    throw error;
   }
 }
 

@@ -28,7 +28,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
 invCont.buildByInventoryId = async function (req, res, next) {
   try {
     const inv_id = req.params.invId;
-    const data = await invModel.getInventoryById(inv_id);
+    const data = await invModel.getInventoryByInventoryId(inv_id);
    
     if (!data) {
       // If no vehicle found, trigger 404
