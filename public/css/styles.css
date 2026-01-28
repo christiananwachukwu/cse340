@@ -169,6 +169,101 @@ nav ul li a:hover, nav ul li a:focus {
   margin-bottom: 1rem;
 }
 
+/* Login Form Styles */
+main form {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+main form label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+main form input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+main form button {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.75rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+main form button:hover {
+  background-color: #0056b3;
+}
+
+main form + p {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Registration Form Specific Styles */
+#pswdBtn {
+  width: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #6c757d;
+  font-size: 0.9rem;
+}
+
+#pswdBtn:hover {
+  background-color: #5a6268;
+}
+
+main form p {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+}
+
+main form input[type="text"],
+main form input[type="email"] {
+  margin-bottom: 1rem;
+}
+
+/* Form Validation Styles */
+input:required:invalid,
+input:focus:invalid {
+  border: 2px solid #d32f2f;
+  background-color: #ffebee;
+}
+
+input:required:valid {
+  border: 2px solid #388e3c;
+  background-color: #e8f5e9;
+}
+
+/* Password requirements text */
+main form span {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: #fff3cd;
+  border-left: 3px solid #ffc107;
+}
+
 /* ===Footer ==== */
 footer {
   margin-top: 2rem;
