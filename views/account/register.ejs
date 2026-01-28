@@ -38,22 +38,6 @@
    
     <%- include('../partials/footer') %>
   </div>
- 
-  <script>
-    const pswdBtn = document.getElementById("pswdBtn");
-    const pswdInput = document.getElementById("account_password");
-   
-    pswdBtn.addEventListener("click", function() {
-      const type = pswdInput.getAttribute("type");
-      if (type === "password") {
-        pswdInput.setAttribute("type", "text");
-        pswdBtn.textContent = "Hide Password";
-      } else {
-        pswdInput.setAttribute("type", "password");
-        pswdBtn.textContent = "Show Password";
-      }
-    });
-  </script>
 </body>
 
 </html>
