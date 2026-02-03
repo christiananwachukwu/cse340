@@ -1,25 +1,28 @@
-const invModel = require("../models/inventory-model") 
-const Util = {} 
-/* ************************ 
-* Constructs the nav HTML unordered list 
-************************** */ 
-Util.getNav = async function (req, res, next) { 
-    let data = await invModel.getClassifications() 
-    let list = "<ul>" 
-    list += '<li><a href="/" title="Home page">Home</a></li>' 
-    data.rows.forEach((row) => { 
-        list += "<li>" 
-        list += '<a href="/inv/type/' + 
-        row.classification_id + 
-        '" title="See our inventory of ' + 
-        row.classification_name + ' vehicles">' + row.classification_name + 
-        "</a>" 
-        list += "</li>" }) 
-        list += "</ul>" 
-        return list 
-    } 
+const invModel = require("../models/inventory-model")
 
-    /* **************************************
+const Util = {}
+
+/* ************************
+* Constructs the nav HTML unordered list
+************************** */
+Util.getNav = async function (req, res, next) {
+    let data = await invModel.getClassifications()
+    let list = "<ul>"
+    list += '<li><a href="/" title="Home page">Home</a></li>'
+    data.rows.forEach((row) => {
+        list += "<li>"
+        list += '<a href="/inv/type/' +
+        row.classification_id +
+        '" title="See our inventory of ' +
+        row.classification_name + ' vehicles">' + row.classification_name +
+        "</a>"
+        list += "</li>"
+    })
+    list += "</ul>"
+    return list
+}
+
+/* **************************************
 * Build the classification view HTML
 * ************************************ */
 Util.buildClassificationGrid = async function(data){
@@ -57,16 +60,16 @@ Util.buildClassificationGrid = async function(data){
 * ************************************ */
 Util.buildVehicleDetailHTML = async function(vehicle) {
   let detail = '<div class="vehicle-detail">';
- 
+
   // Image section
   detail += '<div class="vehicle-image">';
   detail += `<img src="${vehicle.inv_image}" alt="${vehicle.inv_make} ${vehicle.inv_model}">`;
   detail += '</div>';
- 
+
   // Info section
   detail += '<div class="vehicle-info">';
   detail += `<h2>${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}</h2>`;
- 
+
   // Price - formatted with commas and dollar sign
   const price = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -74,17 +77,17 @@ Util.buildVehicleDetailHTML = async function(vehicle) {
     minimumFractionDigits: 0
   }).format(vehicle.inv_price);
   detail += `<p class="price"><strong>Price: ${price}</strong></p>`;
- 
+
   // Mileage - formatted with commas
   const mileage = new Intl.NumberFormat('en-US').format(vehicle.inv_miles);
   detail += `<p><strong>Mileage:</strong> ${mileage} miles</p>`;
- 
+
   detail += `<p><strong>Color:</strong> ${vehicle.inv_color}</p>`;
   detail += `<p><strong>Description:</strong> ${vehicle.inv_description}</p>`;
- 
+
   detail += '</div>'; // close vehicle-info
   detail += '</div>'; // close vehicle-detail
- 
+
   return detail;
 };
 

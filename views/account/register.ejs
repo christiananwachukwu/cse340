@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <%- include('../partials/head', {title: title}) %>
-</head>
-
-<body>
-  <div id="wrapper">
-    <%- include('../partials/header') %>
-   
-    <main>
       <h1><%= title %></h1>
       <%- messages() %>
 
@@ -45,10 +34,17 @@
       </form>
      
       <p>Already have an account? <a href="/account/login">Login</a></p>
-    </main>
-   
-    <%- include('../partials/footer') %>
-  </div>
-</body>
-
-</html>
+      <script>
+        const pswdBtn = document.getElementById("pswdBtn");
+        const pswdInput = document.getElementById("account_password");
+        pswdBtn.addEventListener("click", function() {
+          const type = pswdInput.getAttribute("type");
+          if (type === "password") {
+            pswdInput.setAttribute("type", "text");
+            pswdBtn.textContent = "Hide Password";
+          } else {
+            pswdInput.setAttribute("type", "password");
+            pswdBtn.textContent = "Show Password";
+          }
+        });
+      </script>

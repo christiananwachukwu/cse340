@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <%- include('../partials/head', {title: title}) %>
-</head>
-
-<body>
-  <div id="wrapper">
-    <%- include('../partials/header') %>
-   
-    <main>
       <h1><%= title %></h1>
       <%- messages() %>
       <form action="/account/login" method="post">
@@ -38,10 +27,3 @@
           }
         });
       </script>
-
-    </main>
-   
-    <%- include('../partials/footer') %>
-  </div>
-</body>
-</html>
