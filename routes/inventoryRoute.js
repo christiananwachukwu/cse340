@@ -17,7 +17,7 @@ router.post("/add-classification", utilities.handleErrors(invController.addClass
 
 // Route to build inventory by classification view
 router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
-// Rest route
+// Test route
 router.get("/test", utilities.handleErrors(invController.testInventory));
 // Inventory Detail Route
 router.get("/detail/:invId", utilities.handleErrors(invController.buildByInventoryId));
@@ -27,5 +27,8 @@ router.get("/add-inventory", utilities.handleErrors(invController.buildAddInvent
 
 // Route to process add inventory
 router.post("/add-inventory", inventoryValidate.inventoryRules(), inventoryValidate.checkInventoryData, utilities.handleErrors(invController.addInventory))
+
+// Route to get inventory by classification as JSON
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
 
 module.exports = router;
