@@ -22,6 +22,9 @@ router.get("/test", utilities.handleErrors(invController.testInventory));
 // Inventory Detail Route
 router.get("/detail/:invId", utilities.handleErrors(invController.buildByInventoryId));
 
+// Protected routes (Employee/Admin only)
+router.get("/", utilities.checkAccountType, utilities.handleErrors(invController.buildManagement));
+
 // Route to show inventory form
 router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventory));
 
