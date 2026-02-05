@@ -31,4 +31,10 @@ router.post("/add-inventory", inventoryValidate.inventoryRules(), inventoryValid
 // Route to get inventory by classification as JSON
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
 
+// Route to build edit inventory view
+router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryView));
+
+// Route to process inventory update
+router.post("/update", inventoryValidate.inventoryRules(), inventoryValidate.checkUpdateData, utilities.handleErrors(invController.updateInventory));
+
 module.exports = router;
