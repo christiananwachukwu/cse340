@@ -335,6 +335,380 @@ main form span {
   text-decoration: underline;
 }
 
+/* ========================================
+   FAVORITES & BOOKINGS STYLES
+   ======================================== */
+
+/* Favorites Grid */
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.favorite-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.favorite-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.favorite-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.favorite-info h2 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.favorite-info h2 a {
+  color: #333;
+  text-decoration: none;
+}
+
+.favorite-info h2 a:hover {
+  color: #007bff;
+}
+
+.favorite-info .price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #28a745;
+  margin: 0.5rem 0;
+}
+
+.favorite-info .date-added {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0.5rem 0;
+}
+
+.favorite-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.book-btn, .remove-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.book-btn {
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.book-btn:hover {
+  background-color: #0056b3;
+}
+
+.remove-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.remove-btn:hover {
+  background-color: #c82333;
+}
+
+.no-favorites {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.no-favorites a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.no-favorites a:hover {
+  text-decoration: underline;
+}
+
+/* Booking Form */
+.booking-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.vehicle-summary {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #eee;
+}
+
+.vehicle-summary img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.vehicle-summary h2 {
+  margin: 1rem 0;
+  color: #333;
+}
+
+.vehicle-summary .price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #28a745;
+}
+
+.booking-form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.booking-form input[type="date"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #218838;
+}
+
+.cancel-link {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  color: #666;
+  text-decoration: none;
+}
+
+.cancel-link:hover {
+  text-decoration: underline;
+}
+
+/* Bookings List */
+.bookings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.booking-card {
+  display: flex;
+  gap: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.booking-card img {
+  width: 200px;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.booking-details {
+  flex: 1;
+}
+
+.booking-details h2 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.booking-details p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.status-badge.pending {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.status-badge.confirmed {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.status-badge.cancelled {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.booking-date {
+  font-size: 0.9rem;
+  color: #999;
+  margin-top: 1rem;
+}
+
+.cancel-form {
+  margin-top: 1rem;
+}
+
+.cancel-btn {
+  padding: 0.5rem 1.5rem;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.cancel-btn:hover {
+  background-color: #c82333;
+}
+
+.no-bookings {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.no-bookings a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.no-bookings a:hover {
+  text-decoration: underline;
+}
+
+/* Vehicle Detail Page Actions */
+.vehicle-actions {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.favorite-form {
+  display: inline-block;
+}
+
+.favorite-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.favorite-btn:hover {
+  background-color: #c82333;
+}
+
+.book-now-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+  display: inline-block;
+}
+
+.book-now-btn:hover {
+  background-color: #0056b3;
+}
+
+.login-prompt {
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.login-prompt a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-prompt a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .favorites-grid {
+    grid-template-columns: 1fr;
+  }
+ 
+  .booking-card {
+    flex-direction: column;
+  }
+ 
+  .booking-card img {
+    width: 100%;
+  }
+ 
+  .vehicle-actions {
+    flex-direction: column;
+  }
+}
+
 /* ===Footer ==== */
 footer {
   margin-top: 2rem;

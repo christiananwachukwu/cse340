@@ -1,0 +1,42 @@
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<%- messages() %>
+
+<% if (favorites && favorites.length > 0) { %>
+  <div class="favorites-grid">
+    <% favorites.forEach(function(favorite) { %>
+      <div class="favorite-card">
+        <a href="/inv/detail/<%= favorite.inv_id %>">
+          <img src="<%= favorite.inv_thumbnail %>"
+               alt="<%= favorite.inv_year %> <%= favorite.inv_make %> <%= favorite.inv_model %>">
+        </a>
+        <div class="favorite-info">
+          <h2>
+            <a href="/inv/detail/<%= favorite.inv_id %>">
+              <%= favorite.inv_year %> <%= favorite.inv_make %> <%= favorite.inv_model %>
+            </a>
+          </h2>
+          <p class="price">$<%= favorite.inv_price.toLocaleString() %></p>
+          <p class="date-added">Added: <%= new Date(favorite.date_added).toLocaleDateString() %></p>
+         
+          <div class="favorite-actions">
+            <a href="/booking/create/<%= favorite.inv_id %>" class="book-btn">Book Now</a>
+           
+            <form action="/favorite/remove" method="post" style="display: inline;">
+              <input type="hidden" name="inv_id" value="<%= favorite.inv_id %>">
+              <button type="submit" class="remove-btn">Remove</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+<% } else { %>
+  <p class="no-favorites">You haven't added any favorites yet.
+    <a href="/inv">Browse vehicles</a> to get started!
+  </p>
+<% } %>

@@ -1,0 +1,42 @@
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<%- messages() %>
+
+<div class="booking-container">
+  <div class="vehicle-summary">
+    <img src="<%= vehicleData.inv_thumbnail %>"
+         alt="<%= vehicleData.inv_year %> <%= vehicleData.inv_make %> <%= vehicleData.inv_model %>">
+    <h2><%= vehicleData.inv_year %> <%= vehicleData.inv_make %> <%= vehicleData.inv_model %></h2>
+    <p class="price">$<%= vehicleData.inv_price.toLocaleString() %> / day</p>
+  </div>
+
+  <form action="/booking/create" method="post" class="booking-form">
+    <input type="hidden" name="inv_id" value="<%= vehicleData.inv_id %>">
+   
+    <label for="start_date">Start Date:</label>
+    <input type="date" id="start_date" name="start_date" required>
+   
+    <label for="end_date">End Date:</label>
+    <input type="date" id="end_date" name="end_date" required>
+   
+    <button type="submit" class="submit-btn">Confirm Booking</button>
+    <a href="/inv/detail/<%= vehicleData.inv_id %>" class="cancel-link">Cancel</a>
+  </form>
+</div>
+
+<script>
+  // Set minimum date to today
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('start_date').setAttribute('min', today);
+  document.getElementById('end_date').setAttribute('min', today);
+ 
+  // Update end date minimum when start date changes
+  document.getElementById('start_date').addEventListener('change', function() {
+    const startDate = this.value;
+    document.getElementById('end_date').setAttribute('min', startDate);
+  });
+</script>

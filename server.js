@@ -1,4 +1,5 @@
 const utilities = require("./utilities")
+const path = require("path")
 /* ******************************************
  * This server.js file is the primary file of the 
  * application. It is used to control the project.
@@ -19,6 +20,7 @@ const pool = require('./database/')
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+
 
 /* ***********************
 * Middleware
@@ -50,6 +52,7 @@ app.use(utilities.checkJWTToken)
  * View Engiene and Templates
  *************************/
 app.set("view engine", "ejs")
+app.set("views", path.join(__dirname, "views"))
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout") // not at view root
 
@@ -67,11 +70,14 @@ app.use("/inv", inventoryRoute)
 // Error route
 app.use("/", errorRoute)
 app.use("/account", accountRoute)
+app.use("/favorite", require("./routes/favoriteRoute"))
+app.use("/booking", require("./routes/bookingRoute"))
+
+
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
   next({ status: 404, message: 'Sorry, we appear to have lost that page'})
 })
-
 /* *********************
 * Express Error Handler
 * Place after all other middleware

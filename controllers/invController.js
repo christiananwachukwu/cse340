@@ -29,23 +29,23 @@ invCont.buildByClassificationId = async function (req, res, next) {
 invCont.buildByInventoryId = async function (req, res, next) {
   try {
     const inv_id = req.params.invId;
-    const data = await invModel.getInventoryById(inv_id); // FIXED: was getInventoryByInventoryId
-  
+    const data = await invModel.getInventoryById(inv_id);
+ 
     if (!data) {
-      // If no vehicle found, trigger 404
       const err = new Error('Vehicle not found');
       err.status = 404;
       return next(err);
     }
-  
+ 
     const grid = await utilities.buildVehicleDetailHTML(data);
     let nav = await utilities.getNav();
     const vehicleName = `${data.inv_year} ${data.inv_make} ${data.inv_model}`;
-  
+ 
     res.render("./inventory/detail", {
       title: vehicleName,
       nav,
       grid,
+      vehicleData: data,
       errors: null,
     });
   } catch (error) {
@@ -93,7 +93,7 @@ invCont.addClassification = async function (req, res, next) {
       "notice",
       `The ${classification_name} classification was successfully added.`
     )
-    nav = await utilities.getNav() // Rebuild nav with new classification
+    nav = await utilities.getNav()
     res.status(201).render("./inventory/management", {
       title: "Vehicle Management",
       nav,
@@ -220,7 +220,7 @@ invCont.updateInventory = async function (req, res, next) {
     classification_id,
   } = req.body
   const updateResult = await invModel.updateInventory(
-    inv_id, 
+    inv_id,
     inv_make,
     inv_model,
     inv_description,
@@ -287,7 +287,7 @@ invCont.deleteView = async function (req, res, next) {
 invCont.deleteInventory = async function (req, res, next) {
   let nav = await utilities.getNav()
   const inv_id = parseInt(req.body.inv_id)
- 
+
   const deleteResult = await invModel.deleteInventoryItem(inv_id)
 
   if (deleteResult) {
