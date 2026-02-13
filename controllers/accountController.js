@@ -133,7 +133,7 @@ async function buildAccountManagement(req, res, next) {
 * *************************************** */
 async function buildAccountUpdate(req, res, next) {
   let nav = await utilities.getNav()
-  const account_id = parseInt(req.params.account_id)
+  const account_id = res.locals.accountData.account_id
   const accountData = await accountModel.getAccountById(account_id)
   res.render("account/update", {
     title: "Update Account",
@@ -152,6 +152,10 @@ async function buildAccountUpdate(req, res, next) {
 async function updateAccount(req, res, next) {
   let nav = await utilities.getNav()
   const { account_firstname, account_lastname, account_email, account_id } = req.body
+  if (parseInt(account_id) !== res.locals.accountData.account_id) {
+    req.flash("notice", "Unauthorized access.")
+    return res.redirect("/account/")
+  }
 
   const updateResult = await accountModel.updateAccount(
     account_firstname,
@@ -198,6 +202,11 @@ async function updateAccount(req, res, next) {
 async function updatePassword(req, res, next) {
   let nav = await utilities.getNav()
   const { account_password, account_id } = req.body
+
+  if (parseInt(account_id) !== res.locals.accountData.account_id) {
+    req.flash("notice", "Unauthorized access.")
+    return res.redirect("/account/")
+  }
 
   // Hash the new password
   let hashedPassword

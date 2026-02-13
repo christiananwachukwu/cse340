@@ -21,7 +21,7 @@ router.post("/login", regValidate.loginRules(), regValidate.checkLoginData, util
 router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagement));
 
 // Route to build account update view
-router.get("/update/:account_id", utilities.checkLogin, utilities.handleErrors(accountController.buildAccountUpdate));
+router.get("/update", utilities.checkLogin, utilities.handleErrors(accountController.buildAccountUpdate));
 
 // Route to process account update
 router.post(
